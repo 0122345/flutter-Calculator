@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -128,7 +129,7 @@ class _CalculatorState extends State<Calculator> {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 45.0,
+                  vertical: 10.0,
                 ),
                 child: Center(
                   child: Column(
@@ -214,63 +215,66 @@ class _CalculatorState extends State<Calculator> {
                       ),
 
                       //spacing ndashyiramo
-                      const SizedBox(height: 36.0),
+                      const SizedBox(height: 20.0),
                       //section yama buttons
 
                       // padding: EdgeInsets.symmetric(horizontal: 20.0)
-                      Container(
-                        width: 360,
-                        height: 300,
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(190, 1, 17, 31),
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                         margin: const EdgeInsets.only(left: 5.0,right: 5.0, top: 14,bottom: 0.0),
-                        child:  Column(
-                          children:  [
-                            Row(
-                              children: [
-                                buildButton("7"),
-                                buildButton("8"),
-                                buildButton("9"),
-                                buildButton("/"),
-                              ],
+                        Container(
+                          width: 360,
+                          height: 380,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(190, 1, 17, 31),
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                           margin: const EdgeInsets.only(left: 5.0,right: 5.0, top: 14,bottom: 0.0),
+                          child:  SafeArea(
+                            child: Column(
+                              children:  [
+                                Row(
+                                  children: [
+                                    buildButton("7"),
+                                    buildButton("8"),
+                                    buildButton("9"),
+                                    buildButton("/"),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    buildButton("4"),
+                                    buildButton("5"),
+                                    buildButton("6"),
+                                    buildButton("*"),
+                                  ],
+                                ),
+                                 Row(
+                                   children: [
+                                     buildButton("1"),
+                                     buildButton("2"),
+                                     buildButton("3"),
+                                     buildButton("-"),
+                                   ],
+                                 ),
+                                 Row(
+                                   children: [
+                                     buildButton("."),
+                                     buildButton("0"),
+                                     buildButton("00"),
+                                     buildButton("+"),
+                                   ],
+                                 ),
+                                 Row(
+                                   children: [
+                                     buildButton("CLEAR"),
+                                     buildButton("="),
+                                   ],
+                                 
+                                 ),
+                              
+                               ],
                             ),
-                            Row(
-                              children: [
-                                buildButton("4"),
-                                buildButton("5"),
-                                buildButton("6"),
-                                buildButton("*"),
-                              ],
-                            ),
-                             Row(
-                               children: [
-                                 buildButton("1"),
-                                 buildButton("2"),
-                                 buildButton("3"),
-                                 buildButton("-"),
-                               ],
-                             ),
-                             Row(
-                               children: [
-                                 buildButton("."),
-                                 buildButton("0"),
-                                 buildButton("00"),
-                                 buildButton("+"),
-                               ],
-                             ),
-                             Row(
-                               children: [
-                                 buildButton("CLEAR"),
-                                 buildButton("="),
-                               ],
-                             
-                             ),
-    
-                           ],
+                          ),
                         ),
-                      ),
+                   
                     ],
                   ),
                 ),

@@ -6,7 +6,9 @@ class Nav extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return AppBar(
+       backgroundColor: Theme.of(context).primaryColor,
       flexibleSpace: FlexibleSpaceBar(
         background: Stack(
           children: <Widget>[
