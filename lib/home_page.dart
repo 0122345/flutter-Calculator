@@ -1,5 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:calculator/components/appbar.dart';
+import 'package:calculator/components/battery.dart';
 import 'package:calculator/components/calc.dart';
 import 'package:calculator/components/drawer.dart';
 import 'package:calculator/components/login.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
     Calculator(),
     LoginPage(),
     SignUpPage(),
+    BatteryLevel(),
   ];
 
   void _onItemTapped(int index) {
@@ -117,6 +119,10 @@ class _HomePageState extends State<HomePage> {
                 GButton(
                   icon: Icons.person_add,
                   text: 'SignUp',
+                ),
+                GButton(
+                  icon: Icons.battery_alert,
+                  text: 'Battery Level',
                 ),
               ],
               selectedIndex: _selectedIndex,
