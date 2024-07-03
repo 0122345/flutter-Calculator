@@ -1,7 +1,7 @@
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:battery/battery.dart';
+ 
 
 class BatteryLevel extends StatefulWidget {
   const BatteryLevel({super.key});
@@ -56,7 +56,6 @@ class _BatteryLevelState extends State<BatteryLevel> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-         
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -70,34 +69,35 @@ class _BatteryLevelState extends State<BatteryLevel> {
       );
 
   Widget buildBatteryState(BatteryState batteryState) {
-    final style =  TextStyle(fontSize: 32, color: Colors.white);
-    final double size = 220;
+    const style =
+        TextStyle(fontSize: 32, color: Colors.white );
+    const double size = 200;
 
     switch (batteryState) {
       case BatteryState.full:
-        final color = Colors.green;
+        const color = Colors.green;
 
         return Column(
           children: [
-            Icon(Icons.battery_full, size: size, color: color),
+            const Icon(Icons.battery_full, size: size, color: color),
             Text('Full!', style: style.copyWith(color: color)),
           ],
         );
       case BatteryState.charging:
-        final color = Colors.green;
+        const color = Colors.green;
 
         return Column(
           children: [
-            Icon(Icons.battery_charging_full, size: size, color: color),
+            const Icon(Icons.battery_charging_full, size: size, color: color),
             Text('Charging...', style: style.copyWith(color: color)),
           ],
         );
       case BatteryState.discharging:
       default:
-        final color = Colors.red;
+        const color = Colors.red;
         return Column(
           children: [
-            Icon(Icons.battery_alert, size: size, color: color),
+            const Icon(Icons.battery_alert, size: size, color: color),
             Text('Discharging...', style: style.copyWith(color: color)),
           ],
         );
@@ -107,7 +107,7 @@ class _BatteryLevelState extends State<BatteryLevel> {
   Widget buildBatteryLevel(int batteryLevel) => Text(
         '$batteryLevel%',
         style: const TextStyle(
-          fontSize: 46,
+          fontSize: 36,
           color: Colors.white,
           fontWeight: FontWeight.bold,
         ),

@@ -133,8 +133,8 @@ class _CalculatorState extends State<Calculator> {
                 ),
                 child: Center(
                   child: Column(
-                    //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       //kagastuff ko hejuru
 
@@ -219,14 +219,14 @@ class _CalculatorState extends State<Calculator> {
                       //section yama buttons
 
                       // padding: EdgeInsets.symmetric(horizontal: 20.0)
-                        Container(
+                        Container( 
                           width: 360,
-                          height: 380,
+                          height: 320,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(190, 1, 17, 31),
                             borderRadius: BorderRadius.circular(25),
                           ),
-                           margin: const EdgeInsets.only(left: 5.0,right: 5.0, top: 14,bottom: 0.0),
+                           margin: const EdgeInsets.only(left: 5.0,right: 5.0, top: 24,bottom: 0.0),
                           child:  SafeArea(
                             child: Column(
                               children:  [
