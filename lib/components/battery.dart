@@ -35,7 +35,7 @@ class _BatteryLevelState extends State<BatteryLevel> {
     updateBatteryLevel();
 
     timer = Timer.periodic(
-      Duration(seconds: 10),
+      const Duration(seconds: 10),
       (_) async => updateBatteryLevel(),
     );
   }
@@ -70,8 +70,8 @@ class _BatteryLevelState extends State<BatteryLevel> {
       );
 
   Widget buildBatteryState(BatteryState batteryState) {
-    final style = TextStyle(fontSize: 32, color: Colors.white);
-    final double size = 300;
+    final style =  TextStyle(fontSize: 32, color: Colors.white);
+    final double size = 220;
 
     switch (batteryState) {
       case BatteryState.full:
@@ -106,7 +106,7 @@ class _BatteryLevelState extends State<BatteryLevel> {
 
   Widget buildBatteryLevel(int batteryLevel) => Text(
         '$batteryLevel%',
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 46,
           color: Colors.white,
           fontWeight: FontWeight.bold,

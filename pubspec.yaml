@@ -39,6 +39,8 @@ dependencies:
   google_nav_bar: ^5.0.6
   adaptive_theme: ^3.6.0
   battery: ^2.0.3
+  connectivity_plus: ^2.3.0
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:
