@@ -1,15 +1,22 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:calculator/components/appbar.dart';
-import 'package:calculator/components/battery.dart';
-import 'package:calculator/components/calc.dart';
-import 'package:calculator/components/drawer.dart';
-import 'package:calculator/components/login.dart';
-import 'package:calculator/components/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
- 
+import 'package:google_sign_in/google_sign_in.dart';
+
+import 'components/appbar.dart';
+import 'components/battery.dart';
+import 'components/calc.dart';
+import 'components/drawer.dart';
+import 'components/login.dart';
+import 'components/signup.dart';
+
 class HomePage extends StatefulWidget {
-    const HomePage({Key? key}) : super(key: key);
+  final GoogleSignIn googleSignIn;
+
+  const HomePage({
+    Key? key,
+    required this.googleSignIn,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,13 +24,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-
-  static const List<Widget> _pages = [
-    Calculator(),
-    LoginPage(),
-    SignUpPage(),
-    BatteryLevel(),
-  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -36,13 +36,14 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Change Theme',
-           style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w600,
-            fontSize: 20,
-            color: Color.fromARGB(255, 219, 7, 202),
-           ),
+          title: const Text(
+            'Change Theme',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              color: Color.fromARGB(255, 219, 7, 202),
+            ),
           ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -94,7 +95,15 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).primaryColor,
         drawer: const DrawerSection(),
         appBar: const Nav(),
-        body: _pages[_selectedIndex],
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: [
+            Calculator(),
+            LoginPage(googleSignIn: widget.googleSignIn),
+            SignUpPage(googleSignIn: widget.googleSignIn),
+            BatteryLevel(),
+          ],
+        ),
         bottomNavigationBar: Container(
           color: const Color.fromARGB(255, 4, 24, 141),
           child: Padding(
@@ -150,6 +159,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-
-

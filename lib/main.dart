@@ -1,18 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:get/get.dart';
+
+import 'dependency_injection.dart';
+import 'package:flutter/services.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:calculator/home_page.dart';
 import 'package:calculator/util/theme_data.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'dependency_injection.dart';
-import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-Future<void> main() async {
-  DependencyInjection.init();
-  runApp(const MyApp());
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+ DependencyInjection.init(); // Assuming DependencyInjection.init() is async
+  GoogleSignIn googleSignIn = GoogleSignIn();
+  runApp(MyApp(googleSignIn: googleSignIn));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GoogleSignIn googleSignIn;
+  const MyApp({required this.googleSignIn});
+  
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
@@ -26,10 +34,9 @@ class MyApp extends StatelessWidget {
         title: 'Calculator',
         theme: light,
         darkTheme: dark,
-        home: const HomePage(),
+           home: HomePage(googleSignIn: googleSignIn),
       ),
     );
   }
 }
 
- 

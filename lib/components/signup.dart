@@ -1,205 +1,112 @@
-import 'package:calculator/components/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:calculator/components/drawer.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  final GoogleSignIn googleSignIn;
+
+  const SignUpPage({Key? key, required this.googleSignIn}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       drawer: const DrawerSection(),
       body: Stack(
-          children: <Widget>[
-            Positioned.fill(
-              child: Image.asset(
-                'assets/image/background.jpg',
-                fit: BoxFit.cover,
-              ),
+        children: <Widget>[
+          Positioned.fill(
+            child: Image.asset(
+              'assets/image/background.jpg',
+              fit: BoxFit.cover,
             ),
-
-            // Overlay with color and opacity
-            Positioned.fill(
-              child: Container(
-                color: const Color.fromRGBO(2, 28, 49, 0.75),
-              ),
+          ),
+          Positioned.fill(
+            child: Container(
+              color: const Color.fromRGBO(2, 28, 49, 0.75),
             ),
-        Column(
-          children: [
-            //login profile pic and name
-            Container(
-              margin: const EdgeInsets.only(top: 45),
-              width: 80,
-              height: 80,
-               child: const CircleAvatar(
-                backgroundImage: AssetImage('assets/image/avatarone.jpg'),
-               ),
-              ),
-               
-             const SizedBox(height: 12),
-
-             const  Center(
-                child: Text("SIGN UP",
-                style: TextStyle(
-                  color: Colors.white,
-                  letterSpacing: 2,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-                ),
-              ),
-              
-              const SizedBox(height: 22),
-
-              const  Center(
-                child: Text("Enter your Credentials to continue",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-                ),
-              ),
-
-              const SizedBox(height: 12),
-              
-              //name
+          ),
+          Column(
+            children: [
               Container(
-              width: 340,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: const EdgeInsets.only(left: 5, right: 5),
-              child:  TextField(
-                 
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                     
-                  ),
-                  hintText: 'NAME',
-                  hintStyle: const TextStyle(
-                    color:  Color.fromARGB(190, 1, 17, 31),
-                  ),
-                ),
-                style: const TextStyle(
-                  color:  Color.fromARGB(190, 1, 17, 31),
-                  fontSize: 24,
+                margin: const EdgeInsets.only(top: 45),
+                width: 80,
+                height: 80,
+                child: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/image/avatarone.jpg'),
                 ),
               ),
-            ),
- 
-             const  SizedBox(height: 22),
-
-            //email
-            Container(
-              width: 340,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: const EdgeInsets.only(left: 5, right: 5),
-              child:  TextField(
-                 
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                     
-                  ),
-                  hintText: 'Email',
-                  hintStyle: const TextStyle(
-                    color:  Color.fromARGB(190, 1, 17, 31),
+              const SizedBox(height: 12),
+              Center(
+                child: Text(
+                  "SIGN UP",
+                  style: TextStyle(
+                    color: Colors.white,
+                    letterSpacing: 2,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                style: const TextStyle(
-                  color:  Color.fromARGB(190, 1, 17, 31),
-                  fontSize: 24,
-                ),
               ),
-            ),
-             
-             const  SizedBox(height: 22),
-
-            //password
-            Container(
-              width: 340,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: const EdgeInsets.only(left: 5, right: 5),
-              child:  TextField(
-                 
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                     
-                  ),
-                  hintText: 'Enter Your Password',
-                  //icon:
-                  hintStyle: const TextStyle(
-                    color:  Color.fromARGB(190, 1, 17, 31),
+              const SizedBox(height: 22),
+              Center(
+                child: Text(
+                  "Sign up with Google",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                style: const TextStyle(
-                  color:  Color.fromARGB(190, 1, 17, 31),
-                  fontSize: 24,
-                ),
               ),
-            ),
-
-
-             const SizedBox(height: 20),
-
-            //signin
-            Container(
-               width: 340,
-              height: 40,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(253, 134, 15, 170),
-                borderRadius: BorderRadius.circular(10),
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () {
+                  _signInWithGoogle(context, googleSignIn);
+                },
+                child: Text("SIGN UP WITH GOOGLE"),
               ),
-              child: const Center(
-                child:   Text("SIGN UP",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 25,
-                ),
-                ),
-              ),  
-            ),
-
-            const  SizedBox(height: 10), 
-            
-           const Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                  Text(" Already have account?",
-                style: TextStyle(
-                 color:  Colors.white,
-                 letterSpacing: 1,
-                 fontSize: 20,
-                 fontWeight: FontWeight.bold,
-                 ),
-                 ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Already have an account?",
+                    style: TextStyle(
+                      color: Colors.white,
+                      letterSpacing: 1,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   SizedBox(width: 5),
-
-                  Text("Sign in",style: TextStyle(
-                   color:  Color.fromARGB(253, 134, 15, 170),
-                   fontSize: 20,
-                   fontWeight: FontWeight.bold,
-                   ), 
-                   )     
-              ],
-            ),
-          ],
-        ),
+                  Text(
+                    "Sign In",
+                    style: TextStyle(
+                      color: Color.fromARGB(253, 134, 15, 170),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
         ],
       ),
-
     );
+  }
+
+  // Function to handle Google Sign-In
+  void _signInWithGoogle(BuildContext context, GoogleSignIn googleSignIn) async {
+    try {
+      GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      // Implement your logic after successful sign-in, e.g., navigate to home screen
+      if (googleUser != null) {
+        // Navigate to home screen or perform other actions
+        Navigator.pushReplacementNamed(context, '/home');
+      }
+    } catch (error) {
+      print('Google Sign-In error: $error');
+      // Handle error
+    }
   }
 }

@@ -14,42 +14,47 @@ class NetworkController extends GetxController {
   void _updateConnectionStatus(ConnectivityResult connectivityResult) {
     if (connectivityResult == ConnectivityResult.none) {
       Get.rawSnackbar(
+        borderRadius: 100,
         messageText: const Text(
           'PLEASE CONNECT TO THE INTERNET',
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
         ),
         isDismissible: false,
-        duration: const Duration(minutes: 30),
+        duration: const Duration(seconds: 30),
         backgroundColor: const Color.fromARGB(255, 172, 7, 122),
         icon: const Icon(
           Icons.wifi_off,
           color: Colors.white,
           size: 35,
         ),
-        margin: EdgeInsets.zero,
+        margin: const EdgeInsets.only(bottom: 60.0),
         snackStyle: SnackStyle.GROUNDED,
       );
     } else {
       if (connectivityResult == ConnectivityResult.wifi) {
         Get.rawSnackbar(
+          borderRadius: 100,
           messageText: const Text(
             'CONNECTED TO WIFI',
             style: TextStyle(
                 color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
           ),
           isDismissible: false,
-          duration: const Duration(minutes: 5),
+          duration: const Duration(seconds: 30),
           backgroundColor: const Color.fromARGB(255, 1, 230, 20),
           icon: const Icon(
             Icons.wifi,
             color: Colors.white,
             size: 35,
           ),
-          margin: EdgeInsets.zero,
+           margin: const EdgeInsets.only(bottom: 60.0),
           snackStyle: SnackStyle.GROUNDED,
         );
       }
     }
   }
 }
+
+
+  
