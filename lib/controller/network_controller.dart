@@ -21,7 +21,7 @@ class NetworkController extends GetxController {
               color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
         ),
         isDismissible: false,
-        duration: const Duration(seconds: 30),
+        duration: const Duration(seconds: 10),
         backgroundColor: const Color.fromARGB(255, 172, 7, 122),
         icon: const Icon(
           Icons.wifi_off,
@@ -41,7 +41,7 @@ class NetworkController extends GetxController {
                 color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
           ),
           isDismissible: false,
-          duration: const Duration(seconds: 30),
+          duration: const Duration(seconds: 10),
           backgroundColor: const Color.fromARGB(255, 1, 230, 20),
           icon: const Icon(
             Icons.wifi,

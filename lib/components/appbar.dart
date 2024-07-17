@@ -47,7 +47,7 @@ class Nav extends StatelessWidget implements PreferredSizeWidget {
         ),
         ],
       ),
-      ), // Mark child widgets as const if possible
+      ),  
     );
   }
 

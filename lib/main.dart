@@ -1,18 +1,18 @@
+ 
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 
 import 'dependency_injection.dart';
-import 'package:flutter/services.dart';
-import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:calculator/home_page.dart';
 import 'package:calculator/util/theme_data.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
-
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
- DependencyInjection.init(); // Assuming DependencyInjection.init() is async
+   DependencyInjection.init();
+
   GoogleSignIn googleSignIn = GoogleSignIn();
   runApp(MyApp(googleSignIn: googleSignIn));
 }
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         title: 'Calculator',
         theme: light,
         darkTheme: dark,
-           home: HomePage(googleSignIn: googleSignIn),
+        home: HomePage(googleSignIn: googleSignIn),
       ),
     );
   }

@@ -99,14 +99,14 @@ class SignUpPage extends StatelessWidget {
   void _signInWithGoogle(BuildContext context, GoogleSignIn googleSignIn) async {
     try {
       GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-      // Implement your logic after successful sign-in, e.g., navigate to home screen
+      
       if (googleUser != null) {
-        // Navigate to home screen or perform other actions
+        // Navigate to home screen 
         Navigator.pushReplacementNamed(context, '/home');
       }
     } catch (error) {
       print('Google Sign-In error: $error');
-      // Handle error
+     
     }
   }
 }
